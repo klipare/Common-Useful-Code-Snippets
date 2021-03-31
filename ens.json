@@ -1,0 +1,107 @@
+{
+   "type": "bytes",
+   "messageId": "ID:EMS05-MIPJMS422-MIPJMS421.1C9A5FE6C6C51:4D7BE15DC",
+   "correlationId": null,
+   "destination": {
+      "type": "queue",
+      "name": "FDXUTILITY.INFORESP.ENS.EIF-AZURE-3537372"
+   },
+   "replyTo": null,
+   "priority": 4,
+   "expiration": 0,
+   "timestamp": 1616335405146,
+   "redelivered": false,
+   "properties": {
+      "JMSXDeliveryCount": {
+         "type": "integer",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": 1,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": null
+      },
+      "Originator": {
+         "type": "string",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": "EDA"
+      },
+      "JMS_TIBCO_COMPRESS": {
+         "type": "boolean",
+         "boolean": true,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": null
+      },
+      "_ns_": {
+         "type": "string",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": "www.tibco.com/be/ontology/Events/PublishToEDW"
+      },
+      "metricsStr": {
+         "type": "string",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": "03/21/2021 14:03:584|210321413559042|500297012201|14047590095|FedEx Home Delivery|en|FDEG|SMS|ADMC|ENS|1021||US|US||1|0||||||03/21/2021 00:00:00"
+      },
+      "_nm_": {
+         "type": "string",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": "PublishToEDW"
+      },
+      "JMS_TIBCO_PRESERVE_UNDELIVERED": {
+         "type": "boolean",
+         "boolean": true,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": null
+      },
+      "MsgSource": {
+         "type": "string",
+         "boolean": null,
+         "byte": null,
+         "short": null,
+         "integer": null,
+         "long": null,
+         "float": null,
+         "double": null,
+         "string": "ENS"
+      }
+   },
+   "payloadText": null,
+   "payloadMap": null,
+   "payloadBytes": ""
+}
