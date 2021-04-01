@@ -13,11 +13,11 @@ def countdown(t, m):
     print("Start Time =>", str(ct))
     et = ct + seconds_added
     count = 0
-    
+
     # Send Messages if Current Time is less than End Time
     while ct < et:
         # Display pending duration
-        d = (et - ct)
+        d = et - ct
         mins, secs = divmod(d.seconds, 60)
         timer = "{:02d}:{:02d}".format(mins, secs)
         print(timer, end="\r")
@@ -33,14 +33,13 @@ def send_messages(m):
     try:
         # Create Event Hub Producer Client for Batch Data Load
         producer = EventHubProducerClient.from_connection_string(
-                        conn_str=CONNECTION_STRING,
-                        eventhub_name=EVENTHUB_NAME
-                    )
-        
+            conn_str=CONNECTION_STRING, eventhub_name=EVENTHUB_NAME
+        )
+
         # Create Event Batch
         event_data_batch = producer.create_batch()
         tmp = 0
-        
+
         # Set Random Count of Events for Batch Data Load
         eventcount = random.randrange(1, 9) * m
         while tmp < eventcount:
@@ -63,10 +62,10 @@ def send_messages(m):
 if __name__ == "__main__":
     # Read Config File parameters
     config = ConfigParser()
-    config.read('eh_data_loader.ini')
-    DATA_FILE_PATH = config.get('COMMON', 'DATA_FILE_PATH')
-    EVENTHUB_NAME = config.get('EH', 'EVENTHUB_NAME')
-    CONNECTION_STRING = config.get('EH', 'CONNECTION_STRING')
+    config.read("eh_data_loader.ini")
+    DATA_FILE_PATH = config.get("COMMON", "DATA_FILE_PATH")
+    EVENTHUB_NAME = config.get("EH", "EVENTHUB_NAME")
+    CONNECTION_STRING = config.get("EH", "CONNECTION_STRING")
 
     # Create Batch from data file
     with open(DATA_FILE_PATH) as f:
