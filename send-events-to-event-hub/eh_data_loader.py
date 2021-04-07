@@ -2,6 +2,7 @@ import time
 import datetime
 import json
 import random
+import asyncio
 from configparser import ConfigParser
 from azure.eventhub import EventHubProducerClient, EventData
 
@@ -24,13 +25,16 @@ def countdown(t, m):
         time.sleep(1)
         ct = datetime.datetime.now()
         # Send Messages
-        eventcount = send_messages(m)
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        eventcount = loop.run_until_complete(send_messages(m))
         count += eventcount
     return count
 
 
-def send_messages(m):
+async def send_messages(m):
     try:
+        await asyncio.sleep(1)
         # Create Event Hub Producer Client for Batch Data Load
         producer = EventHubProducerClient.from_connection_string(
             conn_str=CONNECTION_STRING, eventhub_name=EVENTHUB_NAME
@@ -47,10 +51,11 @@ def send_messages(m):
                 # Add Events to Batch based on random count
                 event_data_batch.add(EventData(json.dumps(data)))
                 tmp += 1
-            except ValueError:
+            except Exception as e:
                 # Send Event Batch
-                producer.send_batch(event_data_batch)
-
+                print(e)
+                break
+        producer.send_batch(event_data_batch)
         print("\t %s messages sent" % (eventcount))
 
     finally:
