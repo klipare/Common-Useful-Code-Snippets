@@ -6,7 +6,9 @@ from azure.eventhub import EventHubConsumerClient
 from azure.eventhub.extensions.checkpointstoreblobaio import BlobCheckpointStore
 
 
-def read_messages(CONNECTION_STRING, CONSUMER_GROUP, EVENTHUB_NAME, STARTING_POSITION):
+def read_messages(
+    CONNECTION_STRING, CONSUMER_GROUP, EVENTHUB_NAME, OWNER_LEVEL, PREFETCH, STARTING_POSITION
+):
     client = EventHubConsumerClient.from_connection_string(
         conn_str=CONNECTION_STRING,
         consumer_group=CONSUMER_GROUP,
@@ -16,7 +18,8 @@ def read_messages(CONNECTION_STRING, CONSUMER_GROUP, EVENTHUB_NAME, STARTING_POS
     with client:
         client.receive_batch(
             on_event_batch=on_event_batch,
-            owner_level=110,
+            owner_level=OWNER_LEVEL,
+            prefetch=PREFETCH,
             starting_position=STARTING_POSITION,
         )
 
@@ -41,9 +44,13 @@ if __name__ == "__main__":
     config.read("eh_data_parser.ini")
     READ_COUNT = int(config.get("COMMON", "READ_COUNT"))
     DATA_FILE_PATH = config.get("COMMON", "DATA_FILE_PATH")
+    OWNER_LEVEL = int(config.get("COMMON", "OWNER_LEVEL"))
+    PREFETCH = int(config.get("COMMON", "PREFETCH"))
     EVENTHUB_NAME = config.get("EH", "EVENTHUB_NAME")
     CONNECTION_STRING = config.get("EH", "CONNECTION_STRING")
     CONSUMER_GROUP = config.get("EH", "CONSUMER_GROUP")
     STARTING_POSITION = config.get("EH", "STARTING_POSITION")
 
-    read_messages(CONNECTION_STRING, CONSUMER_GROUP, EVENTHUB_NAME, STARTING_POSITION)
+    read_messages(
+        CONNECTION_STRING, CONSUMER_GROUP, EVENTHUB_NAME, OWNER_LEVEL, PREFETCH, STARTING_POSITION
+    )
