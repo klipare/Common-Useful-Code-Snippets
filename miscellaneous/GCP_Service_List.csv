@@ -1,0 +1,77 @@
+,serviceId,displayName
+0,0245-C3C9-3864,Geolocation API
+1,02DA-B362-D983,Cloud Text-to-Speech API
+2,04C4-B046-D8B2,Cloud Natural Language API
+3,06F5-38F6-036A,Prediction
+4,0AC2-4B25-C429,Geocoding API
+5,11F2-A380-6357,Maps Elevation API
+6,1992-3666-B975,Cloud Composer
+7,1AF9-4430-172E,NetApp Cloud Volumes
+8,1C58-CF90-9614,Firebase Database
+9,1DB1-3CD3-35A3,Translate
+10,206A-22FA-D734,Transcode API
+11,2431-6410-693F,SendGrid
+12,24E6-581D-38E5,BigQuery
+13,2662-232A-AC11,Firebase Hosting
+14,2992-EE56-ACD8,Cloud CDN
+15,29C8-2050-2424,Genomics
+16,29E7-DA93-CA13,Cloud Functions
+17,347E-F249-649F,Alcide
+18,3679-7487-549C,Roads API
+19,3819-1239-10F2,Prodoscore
+20,3C29-F0F9-87C0,Aqua Container Security Platform
+21,3DC9-F70D-E342,Kasten K10 Platform
+22,3E65-A14D-E29F,Firebase Auth
+23,42BE-D2BF-F64F,Zync
+24,50C8-D359-64EA,Google Maps Mobile SDK
+25,5490-F7B7-8DF6,Stackdriver Logging
+26,57D6-8E6B-2DE0,Cloud Dataflow
+27,58CD-E7C3-72CA,Stackdriver Monitoring
+28,5AF5-2C11-D467,Cloud Memorystore for Redis
+29,5B4B-FC5C-5A9D,HYCU
+30,5DD3-CA5C-D8EA,Firebase
+31,63DE-82AB-F564,Cloud Speech API
+32,6CD9-8229-22B6,Cloud IoT Core
+33,6F81-5844-456A,Compute Engine
+34,7691-09D6-4201,PingCAP TiDB Operator
+35,8735-FD22-0718,Cloud Test Lab
+36,879F-1832-8749,Stackdriver
+37,8B5D-EF7D-EB12,Cloud Build
+38,8CD0-2A17-0B05,Cloud Video Intelligence API
+39,9501-987F-84F0,BigQuery Data Transfer Service
+40,95FF-2EF5-5EA1,Cloud Storage
+41,9662-B51E-5089,Cloud SQL
+42,9B82-7513-9D1C,Stackdriver Trace
+43,A1E8-BE35-7EBC,Cloud Pub/Sub
+44,AB0F-496F-FE96,Codefresh
+45,AD74-09F0-CDF1,USAN Dialogflow Enterprise Telephony Gateway
+46,B7D9-FDCB-15D8,Directions API
+47,BFB3-57CC-CA94,Aerospike Server Enterprise
+48,C08E-37B9-80D3,Cloud Vision API
+49,C250-726E-A553,Time Zone API
+50,C3BE-24A5-0975,Cloud Bigtable
+51,C7DA-6CFA-DF6E,Google Service Control
+52,CAE2-A537-4A95,Source Repository
+53,CC63-0873-48FD,Cloud Spanner
+54,CCD8-9BF1-090E,Kubernetes Engine
+55,CF79-2786-ADFC,Maps Static API
+56,D64E-AF12-1813,Cloud Data Loss Prevention
+57,D7CA-8319-A87F,Galactic Fog Gestalt
+58,D909-55BF-2B2F,Cloud Talent Solution
+59,D97E-AB26-5D95,Cloud Filestore
+60,DC5D-D207-FD2F,Identity toolkit
+61,E000-3F24-B8AA,Cloud TPU
+62,E19D-14A9-5725,Cloud Machine Learning Engine
+63,E1D8-71A6-53DE,Distance Matrix API
+64,E283-B22D-2BA2,Google Maps SDK for iOS
+65,E790-1EC8-206A,Weaveworks
+66,E8D1-2940-7C49,Cloud Contact Center
+67,E904-3803-243D,ManagedKube Kubernetes Cost Attribution
+68,ED34-2A09-AC0E,Red Pill Analytics
+69,EE2F-D110-890C,Cloud Key Management Service (KMS)
+70,F17B-412E-CB64,App Engine
+71,F33E-369C-A8B4,superQuery
+72,FA26-5236-B8B5,Cloud DNS
+73,FBC0-AA4A-C89A,Cloud Dialogflow API
+74,FE65-6566-F37B,Komprise
+75,FEF0-295D-9A74,itopia
