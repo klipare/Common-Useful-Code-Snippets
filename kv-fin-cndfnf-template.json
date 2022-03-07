@@ -1,0 +1,112 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        // Common Attributes
+        "tenant_id": {
+            "type": "string"
+        },"org_name": {
+            "type": "string"
+        },
+        "env_name": {
+            "type": "string"
+        },
+        "tier_name": {
+            "type": "string"
+        },
+        "prj_name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "access": {
+            "type": "string"
+        },
+        // Add parameters for tags
+        "tag_product_name": {
+            "type": "string"
+        },
+        "tag_product_env": {
+            "type": "string"
+        },
+        "tag_product_owner": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "kv_name": "[concat('sa', parameters('org_name'), parameters('env_name'), parameters('tier_name'), parameters('prj_name'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2021-04-01-preview",
+            "name": "[variables('kv_name')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "ProductName": "[parameters('tag_product_name')]",
+                "ProductEnvironment": "[parameters('tag_product_env')]",
+                "ProductOwner": "[parameters('tag_product_owner')]"
+            },
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[parameters('tenant_id')]",
+                "accessPolicies": [
+                    {
+                        "tenantId": "[parameters('tenant_id')]",
+                        "objectId": "[parameters('access')]",
+                        "permissions": {
+                            "keys": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "secrets": [
+                                "Get",
+                                "List",
+                                "Set",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "certificates": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore",
+                                "ManageContacts",
+                                "ManageIssuers",
+                                "GetIssuers",
+                                "ListIssuers",
+                                "SetIssuers",
+                                "DeleteIssuers"
+                            ]
+                        }
+                    }
+                ],
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": false,
+                "enableSoftDelete": false,
+                "softDeleteRetentionInDays": 90,
+                "enableRbacAuthorization": false,
+                "vaultUri": "[concat('https://', variables('kv_name'), '.vault.azure.net/')]"
+            }
+        }
+    ]
+}
