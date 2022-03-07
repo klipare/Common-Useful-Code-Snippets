@@ -3,9 +3,6 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         // Common Attributes
-        "tenant_id": {
-            "type": "string"
-        },
         "org_name": {
             "type": "string"
         },
@@ -20,19 +17,6 @@
         },
         "location": {
             "type": "string"
-        },
-        // SQL Server Attributes
-        "sql_login_admin": {
-            "type": "string"
-        },
-        "sql_login_group": {
-            "type": "string"
-        },
-        "sql_login_group_sid": {
-            "type": "string"
-        },
-        "sql_login_adonlyauth": {
-            "type": "bool"
         },
         // Add parameters for tags
         "tag_product_name": {
