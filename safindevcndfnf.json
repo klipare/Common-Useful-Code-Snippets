@@ -1,0 +1,333 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        // Common Attributes
+        "tenant_id": {
+            "type": "string"
+        },
+        "org_name": {
+            "type": "string"
+        },
+        "env_name": {
+            "type": "string"
+        },
+        "tier_name": {
+            "type": "string"
+        },
+        "prj_name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        // SQL Server Attributes
+        "sql_login_admin": {
+            "type": "string"
+        },
+        "sql_login_group": {
+            "type": "string"
+        },
+        "sql_login_group_sid": {
+            "type": "string"
+        },
+        "sql_login_adonlyauth": {
+            "type": "bool"
+        },
+        // Add parameters for tags
+        "tag_product_name": {
+            "type": "string"
+        },
+        "tag_product_env": {
+            "type": "string"
+        },
+        "tag_product_owner": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "sa_name": "[concat('sa', parameters('org_name'), parameters('env_name'), parameters('tier_name'), parameters('prj_name'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-08-01",
+            "name": "[variables('sa_name')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "ProductEnvironment": "[parameters('tag_product_env')]",
+                "ProductName": "[parameters('tag_product_name')]",
+                "ProductOwner": "[parameters('tag_product_owner')]"
+            },
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "minimumTlsVersion": "TLS1_2",
+                "allowBlobPublicAccess": true,
+                "networkAcls": {
+                    "resourceAccessRules": [],
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [
+                        {
+                            "value": "51.140.77.227",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.245.29",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.80.51",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.61.124",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.47.105",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.124.13",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.105.77.96/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.148.0/28",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.211.0/28",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.212.224/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.90.129.0/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.90.129.32/28",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.58.70.192/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.58.70.224/28",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.236.184.163",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "104.44.90.0/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.239.240.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.142.128.0/18",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.136.20.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.114.92.0/22",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.114.84.0/22",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.113.192.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.112.230.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.111.205.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.109.32.0/22",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.108.224.0/23",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "52.108.189.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.136.0/22",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.134.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.129.128/26",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.128.128/25",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.128.64/26",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.128.0/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.141.0.0/17",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.140.192.0/18",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.137.128.0/18",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.132.64.0/18",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.104.32.0/19",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "51.11.96.0/19",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.126.43.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.126.16.0/25",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.90.157.192/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.90.139.96/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.90.131.96/27",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.90.29.0/26",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.90.28.192/26",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.87.228.0/22",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.81.112.0/20",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "40.79.218.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.190.171.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.190.144.0/25",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.150.110.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.150.52.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.150.2.0/23",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.58.64.0/18",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.47.82.0/23",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.47.56.0/24",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.40.104.0/21",
+                            "action": "Allow"
+                        },
+                        {
+                            "value": "20.39.160.0/21",
+                            "action": "Allow"
+                        }
+                    ],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        }
+    ],
+    "outputs": {}
+}
